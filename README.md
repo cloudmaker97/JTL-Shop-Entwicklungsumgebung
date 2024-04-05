@@ -51,6 +51,7 @@ just uninstall
 | `install_demo_products` | `10` | Falls die Demo-Daten installiert werden: Anzahl der zu generierenden Produkte |
 | `install_demo_categories` | `3` | Falls die Demo-Daten installiert werden: Anzahl zu generierenden der Kategorien |
 | `install_demo_manufacturers` | `3` | Falls die Demo-Daten installiert werden: Anzahl der zu generierenden Hersteller |
+| `install_url` | `https://jtl-shop-**X.X.X**.ddev.site` | Die URL über die  |
 
 ### Befehle für den DDEV-Entwicklungsserver
 

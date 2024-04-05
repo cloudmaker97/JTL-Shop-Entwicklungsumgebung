@@ -3,6 +3,7 @@
     "dockerFile": "Dockerfile",
     "workspaceMount": "source=${localWorkspaceFolder}/.,target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
+    "postStartCommand": "just install_url='CODESPACE'",
     "mounts": [
         "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
     ],
@@ -24,6 +25,14 @@
                 "DEVSENSE.composer-php-vscode",
                 "DEVSENSE.phptools-vscode"
             ]
+        }
+    },
+    "portsAttributes": {
+        "8027": {
+            "label": "Mailpit"
+        },
+        "8080": {
+            "label": "Webserver"
         }
     }
 }

@@ -28,10 +28,6 @@ RUN apt-get install ./ddev.deb -y && rm ./ddev.deb
 # Install the `just` command runner
 RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /bin
 
-# Install `node` and `npm`
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs
-
 # Create an developer user with passwordless sudo
 RUN useradd -m -s /bin/bash developer && \
     echo 'developer:developer' | chpasswd
