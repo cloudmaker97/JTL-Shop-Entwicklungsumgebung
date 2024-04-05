@@ -32,6 +32,7 @@ Nach der erfolgreichen Installation kann der Shop über die angezeigte URL aufge
 # Führt die Installation mit spezifischen Werten aus. 
 # Darüber kann die Installation der Shop-Version gesteuert werden, 
 # die PHP-Version und ob Demo-Daten installiert werden sollen.
+# Weitere Parameter sind in der Tabelle unten aufgeführt.
 just shop_version="5.3.1" install_demo="false" php_version="8.1"
 ```
 
