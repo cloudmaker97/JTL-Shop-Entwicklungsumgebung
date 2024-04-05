@@ -1,26 +1,31 @@
-# Shop Entwicklung
+# Entwicklungsumgebung für den JTL-Shop
 
 ## Beschreibung
 
 Dieses Repository enthält alle benötigten Scripts, um einen JTL-Shop schnell und automatisiert zu Entwicklungszwecken zu installieren. Die Nutzung für produktive Systeme ist mit diesem Projekt nicht vorgesehen und wird auch nicht empfohlen.
 
-### Lizenz der Shop-Software
+## Voraussetzungen
 
-> Die Shop-Software wurde durch die [JTL-Software GmbH](https://www.jtl-software.de/) erstellt und unterliegt den jeweiligen [Lizenzbedingungen](LICENSE.md).
+Es gelten die Lizenzbedingungen der JTL-Software-GmbH. Die Lizenzbedingungen sind in diesem Projekt als Lizenzdatei hinterlegt. Zur Nutzung dieses Repositories sind zudem folgende Voraussetzungen notwendig:
 
-### Lizenz der Scripts in diesem Projekt
-
-> Die Scripts zur automatisierten Installation wurden von [Dennis Heinrich](https://dennis-heinri.ch) erstellt und unterliegen ebenfalls den selben Lizenzbedingungen, wie die Shop-Software.
+- [DDEV: Entwicklungsserver](https://ddev.readthedocs.io/en/stable/)
+- [Docker: Virtualisierung](https://www.docker.com/)
+- [Just: Command Runner](https://just.systems/)
 
 ## Installation und Befehle
 
-Zur Installation des Shops wird nur ein Befehl benötigt. Der Befehl `just install` installiert den Shop mit der neusten Version und den standardmäßigen Einstellungen. Optional kann auch eine spezifische Version installiert werden. Dazu wird eine unterstützte Versionsnummer verwendet.
+Zur Installation des Shops wird nur ein Befehl benötigt. Der Befehl `just install` installiert den Shop mit der neusten Version und den standardmäßigen Einstellungen. 
 
-```bash
-# Führt die Installation mit der neusten Shop-Version auf PHP 8.1 
-# aus und installiert anschließend den Shop mit Demo-Daten.
-just
-```
+Nach der erfolgreichen Installation kann der Shop über die angezeigte URL aufgerufen werden. Die Anmeldedaten wurden automatisch festgelegt und sind:
+
+| Bereich | Benutzername | Passwort |
+| --- | --- | --- |
+| Shop-Administration | `admin` | `admin` |
+| Shop-Abgleich | `sync` | `sync` |
+
+Optional kann die Installation mit anderen Versionen und Werten installiert werden. 
+
+### Benutzerdefinierte Installations-Routinen
 
 ```bash
 # Führt die Installation mit spezifischen Werten aus. 
@@ -36,30 +41,22 @@ just shop_version="5.3.1" install_demo="false" php_version="8.1"
 just uninstall
 ```
 
-```bash
-# Diese Befehle sind zur Steuerung des DDEV-Containers vorgesehen.
-# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-# Startet den DDEV-Container
-just start
-# Stoppt den DDEV-Container 
-just stop 
-# Zeigt die Beschreibung und URLs des Containers an
-just describe 
-```
-
 | Parameter | Standardwert | Beschreibung |
 | --- | --- | --- |
 | `shop_version` | `5.3.1` | Die Shop-Version, die installiert werden soll. Aktuell stehen zur Auswahl `5.3.1`, `5.2.5`, `5.1.6` oder `5.0.6`. Um weitere Versionen anzubieten, siehe weiter unten im Abschnitt 'Unterstützte Shop-Versionen' |
 | `php_version` | `8.2` | Die PHP-Version, die genutzt werden soll. `5.6`, `7.0`, `7.1`, `7.2`, `7.3`, `7.4`, `8.0`, `8.1`, `8.2`, oder `8.3` |
 | `install_demo` | `true` | Ob der neue Shop Demo-Daten enthalten soll, ansonsten muss `false` angegeben werden. |
 
-## Voraussetzungen
+### Befehle für den DDEV-Entwicklungsserver
 
-Zur Nutzung dieses Repositories sind folgende Voraussetzungen notwendig:
-
-- [DDEV: Entwicklungsserver](https://ddev.readthedocs.io/en/stable/)
-- [Docker: Virtualisierung](https://www.docker.com/)
-- [Just: Command Runner](https://just.systems/)
+```bash
+# Startet den Entwicklungs-Container
+just start
+# Stoppt den Entwicklungs-Container 
+just stop 
+# Zeigt die Beschreibung und URLs des Containers an
+just describe 
+```
 
 ## Unterstützte Shop-Versionen
 
