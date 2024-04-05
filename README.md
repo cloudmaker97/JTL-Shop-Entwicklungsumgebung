@@ -8,7 +8,7 @@ Dieses Repository enthält alle benötigten Scripts, um einen JTL-Shop schnell u
 
 ![Installation im Terminal](https://github.com/cloudmaker97/JTL-Shop-Entwicklungsumgebung/assets/4189795/98325070-fb9a-4f19-94b0-89bc162a07db)
 
-## Voraussetzungen
+### Voraussetzungen
 
 Es gelten die Lizenzbedingungen der JTL-Software-GmbH. Die Lizenzbedingungen sind in diesem Projekt als Lizenzdatei hinterlegt. Zur Nutzung dieses Repositories sind zudem folgende Voraussetzungen notwendig:
 
