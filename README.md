@@ -26,8 +26,6 @@ Nach der erfolgreichen Installation kann der Shop über die angezeigte URL aufge
 | Shop-Administration | `admin` | `admin` |
 | Shop-Abgleich | `sync` | `sync` |
 
-Optional kann die Installation mit anderen Versionen und Werten installiert werden. 
-
 ### Benutzerdefinierte Installations-Routinen
 
 ```bash
