@@ -6,7 +6,7 @@ Dieses Repository enthält alle benötigten Scripts, um einen JTL-Shop schnell u
 
 ### Lizenz der Shop-Software
 
-> Die Shop-Software wurde durch die [JTL-Software GmbH](https://www.jtl-software.de/) erstellt und unterliegt den jeweiligen Lizenzbedingungen, welche auch hier einsehbar sind: [JTL-Shop / Core](https://gitlab.com/jtl-software/jtl-shop/core/-/blob/master/LICENSE.md).
+> Die Shop-Software wurde durch die [JTL-Software GmbH](https://www.jtl-software.de/) erstellt und unterliegt den jeweiligen [Lizenzbedingungen](LICENSE.md).
 
 ### Lizenz der Scripts in diesem Projekt
 
