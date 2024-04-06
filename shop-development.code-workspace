@@ -2,8 +2,20 @@
 	"folders": [
 		{
 			"path": ".",
-			"name": "JTL-Shop: System zur Entwicklung"
-		}
+			"name": "Alle Ordner",
+		},
+		{
+			"path": "shop",
+			"name": "JTL-Shop: Shop-System"
+		},
+		{
+			"path": "tools",
+			"name": "Sonstiges: Tools"
+		},
+		{
+			"path": ".devcontainer",
+			"name": "Sonstiges: Devcontainer"
+		},
 	],
 	"settings": {}
 }

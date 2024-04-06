@@ -4,7 +4,6 @@ install_demo := "true"
 install_demo_products := "10"
 install_demo_categories := "3"
 install_demo_manufacturers := "3"
-install_url := "https://jtl-shop-"+shop_version+".ddev.site"
 
 # Installiert den Shop mit den angegebenen Werten
 [linux]
@@ -24,7 +23,7 @@ install:
     @echo "Konfiguriere die Entwicklungsumgebung"
     just ddev-configuration
     @echo "Installiere den Shop automatisch und lösche das Installationsverzeichnis"
-    just install_url="{{install_url}}" run-installer
+    just run-installer
 
 [private]
 [linux]
@@ -74,24 +73,14 @@ describe:
 
 [private]
 run-installer:
-    #!/usr/bin/env bash
-    set -euxo pipefail
-    install_url_interpreted=""
-    if [ {{install_url}} = "CODESPACE" ]; then
-        install_url_interpreted="https://"$(jq -r ".CODESPACE_NAME" /workspaces/.codespaces/shared/environment-variables.json)"-8080.app.github.dev"
-    else
-        install_url_interpreted={{install_url}}
-    fi
-    curl -X POST -k -H 'Content-Type: application/x-www-form-urlencoded' -d 'admin[name]=admin&admin[pass]=admin&admin[locale]=de&wawi[name]=sync&wawi[pass]=sync&db[host]=db&db[pass]=db&db[socket]=&db[user]=db&db[name]=db&demoProducts={{install_demo_products}}&demoCategories={{install_demo_categories}}&demoManufacturers={{install_demo_manufacturers}}' $install_url_interpreted/install/install.php?task=doinstall
-    if [ {{install_demo}} = "true" ]; then \
-        curl -X POST -k -H 'Content-Type: application/x-www-form-urlencoded' -d 'admin[name]=admin&admin[pass]=admin&admin[locale]=de&wawi[name]=sync&wawi[pass]=sync&db[host]=db&db[pass]=db&db[socket]=&db[user]=db&db[name]=db&demoProducts={{install_demo_products}}&demoCategories={{install_demo_categories}}&demoManufacturers={{install_demo_manufacturers}}' $install_url_interpreted/install/install.php?task=installdemodata; \
-    fi
-    if [ {{install_url}} = "CODESPACE" ]; then
-        file_path="path/to/your/file.php"
-        sed -i "s|define('URL_SHOP', 'https://localhost');|define('URL_SHOP', '$install_url_interpreted');|g" ./shop/includes/config.JTL-Shop.ini.php
+    @echo "\r\nInstalliere die Datenbank..."
+    @curl --silent -X POST -k -H 'Content-Type: application/x-www-form-urlencoded' -d 'admin[name]=admin&admin[pass]=admin&admin[locale]=de&wawi[name]=sync&wawi[pass]=sync&db[host]=db&db[pass]=db&db[socket]=&db[user]=db&db[name]=db&demoProducts={{install_demo_products}}&demoCategories={{install_demo_categories}}&demoManufacturers={{install_demo_manufacturers}}' https://jtl-shop-{{shop_version}}.ddev.site/install/install.php?task=doinstall
+    @if [ {{install_demo}} = "true" ]; then \
+        curl --silent -X POST -k -H 'Content-Type: application/x-www-form-urlencoded' -d 'admin[name]=admin&admin[pass]=admin&admin[locale]=de&wawi[name]=sync&wawi[pass]=sync&db[host]=db&db[pass]=db&db[socket]=&db[user]=db&db[name]=db&demoProducts={{install_demo_products}}&demoCategories={{install_demo_categories}}&demoManufacturers={{install_demo_manufacturers}}' https://jtl-shop-{{shop_version}}.ddev.site/install/install.php?task=installdemodata; \
     fi
     clear
-    echo "Erreichbar unter: "$install_url_interpreted
+    @echo "Installation erfolgreich abgeschlossen."
+    @echo "Erreichbar unter: https://jtl-shop-{{shop_version}}.ddev.site"
 
 [private]
 copy-installer:
@@ -101,7 +90,6 @@ copy-installer:
 
 [private]
 ddev-configuration:
-    ddev config --php-version {{php_version}} --project-type php --docroot ./shop --project-name jtl-shop-{{shop_version}} --webserver-type apache-fpm
-    ddev config global --instrumentation-opt-in=false
+    ddev config --php-version {{php_version}} --project-type php --docroot ./shop --project-name jtl-shop-{{shop_version}}
     ddev start
     ddev exec composer install --working-dir=./shop/includes

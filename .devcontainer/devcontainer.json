@@ -3,7 +3,6 @@
     "dockerFile": "Dockerfile",
     "workspaceMount": "source=${localWorkspaceFolder}/.,target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "postStartCommand": "just install_url='CODESPACE'",
     "mounts": [
         "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
     ],
