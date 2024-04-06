@@ -72,6 +72,7 @@ describe:
         echo "Keine Konfiguration gefunden, bitte zuerst 'just install' ausführen."; \
     fi
 
+[private]
 run-installer:
     #!/usr/bin/env bash
     set -euxo pipefail
@@ -101,5 +102,6 @@ copy-installer:
 [private]
 ddev-configuration:
     ddev config --php-version {{php_version}} --project-type php --docroot ./shop --project-name jtl-shop-{{shop_version}} --webserver-type apache-fpm
+    ddev config global --instrumentation-opt-in=false
     ddev start
     ddev exec composer install --working-dir=./shop/includes
