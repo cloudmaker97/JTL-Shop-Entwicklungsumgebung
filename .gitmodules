@@ -1,0 +1,3 @@
+[submodule "shop/plugins/dh_matomo_tracking"]
+	path = shop/plugins/dh_matomo_tracking
+	url = git@github.com:cloudmaker97/JTL-Matomo-Tracking.git
