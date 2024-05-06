@@ -14,7 +14,8 @@ install:
     mkdir -p ./shop
     @echo "Lade JTL-Shop v{{shop_version}} herunter"
     cd ./shop && wget https://gitlab.com/jtl-software/jtl-shop/core/-/archive/v{{shop_version}}/core-v{{shop_version}}.zip -O core.zip
-    cd ./shop && unzip -o core.zip && rm core.zip
+    # Unzip and ignore existing files
+    cd ./shop && unzip -on core.zip && rm core.zip
     # Overwrite all files, otherwise set --ignore-existing for rsync
     @echo "Kopiere heruntergeladene Dateien in das Shop-Verzeichnis"
     cd ./shop && rsync -av core-*/* . && rm -rf core-*

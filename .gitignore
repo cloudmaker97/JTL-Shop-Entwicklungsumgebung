@@ -1,0 +1,8 @@
+# Ignore all changes except for non-default plugins and templates
+/shop/*
+!/shop/plugins
+!/shop/templates/*
+/shop/templates/NOVA
+
+# Include the DDEV configuration
+!/.ddev
