@@ -5,7 +5,7 @@ install_demo_products := "10"
 install_demo_categories := "3"
 install_demo_manufacturers := "3"
 
-# Installiert den Shop mit den angegebenen Werten
+# Installiert den Shop mit den angegebenen Werten (Standard)
 [linux]
 install:
     @echo "Installiere Abhängigkeiten (ddev, rsync, unzip, mkcert)"
@@ -72,6 +72,7 @@ describe:
         echo "Keine Konfiguration gefunden, bitte zuerst 'just install' ausführen."; \
     fi
 
+[linux]
 [private]
 run-installer:
     @echo "\r\nInstalliere die Datenbank..."
@@ -83,12 +84,14 @@ run-installer:
     @echo "Installation erfolgreich abgeschlossen."
     @echo "Erreichbar unter: https://jtl-shop-{{shop_version}}.ddev.site"
 
+[linux]
 [private]
 copy-installer:
     cp ./tools/installer/install_{{shop_version}}.zip ./shop/install/installer.zip
     unzip -o ./shop/install/installer.zip -d ./shop/install
     rm ./shop/install/installer.zip
 
+[linux]
 [private]
 ddev-configuration:
     ddev config --php-version {{php_version}} --project-type php --docroot ./shop --project-name jtl-shop-{{shop_version}}
