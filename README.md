@@ -2,6 +2,8 @@
 
 Dieses Repository enthält alle benötigten Scripts, um einen JTL-Shop schnell und automatisiert zu Entwicklungszwecken zu installieren. Die Nutzung für produktive Systeme ist mit diesem Projekt nicht vorgesehen und wird auch nicht empfohlen.
 
+![Installation Demo](.github/assets/command-exec.gif)
+
 ## Voraussetzungen
 
 Es gelten die Lizenzbedingungen der JTL-Software-GmbH. Die Lizenzbedingungen sind in diesem Projekt als Lizenzdatei hinterlegt. Zur Nutzung dieses Repositories sind zudem folgende Voraussetzungen notwendig:
