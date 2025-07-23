@@ -2,8 +2,6 @@
 
 Dieses Repository enthält alle benötigten Scripts, um einen JTL-Shop schnell und automatisiert zu Entwicklungszwecken zu installieren. Die Nutzung für produktive Systeme ist mit diesem Projekt nicht vorgesehen und wird auch nicht empfohlen.
 
-![Installation Demo](.github/assets/command-exec.gif)
-
 ## Voraussetzungen
 
 Es gelten die Lizenzbedingungen der JTL-Software-GmbH. Die Lizenzbedingungen sind in diesem Projekt als Lizenzdatei hinterlegt. Zur Nutzung dieses Repositories sind zudem folgende Voraussetzungen notwendig:
@@ -71,3 +69,7 @@ Hier sind alle Installationsparameter die mit der Installation mitgegeben werden
 | `install_demo_categories` | `3` | Falls die Demo-Daten installiert werden: Anzahl zu generierenden der Kategorien |
 | `install_demo_manufacturers` | `3` | Falls die Demo-Daten installiert werden: Anzahl der zu generierenden Hersteller |
 | `install_url` | `jtl-shop.ddev.site` | Die URL über die der Shop erreicht werden soll. Achtung: DDEV Config vorher anpassen!  |
+
+### Beispiel
+
+![Installation Demo](.github/assets/command-exec.gif)
