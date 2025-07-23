@@ -1,0 +1,61 @@
+name: Test the installation routine
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Set up DDEV
+      uses: ddev/github-action-setup-ddev@v1
+
+    - name: Start DDEV environment
+      run: |
+        ddev start
+        ddev describe
+
+    - name: Run installation
+      run: |
+        echo "Starting JTL-Shop installation..."
+        ddev just install
+
+    - name: Basic verification
+      run: |
+        echo "=== Verifying installation ==="
+        # Check if basic shop files are present
+        test -d shop/
+        test -f shop/index.php
+        test -d shop/includes/
+        
+        # Check if database tables were created
+        ddev exec "mysql -e 'SHOW TABLES;' db" | grep -q "tadmin" || (echo "Database tables not found" && exit 1)
+        
+        echo "Installation verification completed successfully!"
+
+    - name: Debug on failure
+      if: failure()
+      run: |
+        echo "=== DDEV Status ==="
+        ddev describe
+        echo "=== DDEV Logs ==="
+        ddev logs
+        echo "=== Shop Directory ==="
+        ls -la shop/ || true
+        echo "=== Install Directory ==="
+        ls -la shop/install/ || true
+
+    - name: Cleanup
+      if: always()
+      run: |
+        ddev stop
+        ddev remove -RO 
