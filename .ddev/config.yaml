@@ -1,7 +1,7 @@
 name: jtl-shop
 type: php
 docroot: ./shop
-php_version: "8.2"
+php_version: "8.4"
 webserver_type: apache-fpm
 xdebug_enabled: false
 additional_hostnames: []
